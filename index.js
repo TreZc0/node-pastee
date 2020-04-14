@@ -33,7 +33,7 @@ Pastee.prototype.paste = function(data, callback) {
 		}
 	}
 	
-	request.post('http://paste.ee/api', { form : req }, function(err, res, body) {
+	request.post('https://paste.ee/api', { form : req }, function(err, res, body) {
 		var json = JSON.parse(body);
 		
 		if (json.status == 'success') {
@@ -60,7 +60,7 @@ Pastee.prototype.retrieve = function(paste, callback, key) {
 	
 	var context = this;
 	
-	request.get('http://paste.ee/r/' + paste, function(err, res, body) {
+	request.get('https://paste.ee/r/' + paste, function(err, res, body) {
 		if (!err && res.statusCode == 200) {
 			if (key) {
 				body = context.decrypt(body, key);
